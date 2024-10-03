@@ -5,16 +5,20 @@ using UnityEngine.AI;
 
 public class Game_01_Enemy : MonoBehaviour
 {
-    NavMeshAgent agent;
-    public GameObject[] endPoint;
+        NavMeshAgent agent;
+    GameObject[] endPoint;
+    
     Animator anims;
     int endPointNum;
+
+    
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         endPoint = GameObject.FindGameObjectsWithTag("EndPoint"); //change this to tag when using multiple
         anims = GetComponent<Animator>();
         endPointNum = Random.Range(0, endPoint.Length);
+        agent.speed = Random.Range(1f, 4f);
     }
 
     
