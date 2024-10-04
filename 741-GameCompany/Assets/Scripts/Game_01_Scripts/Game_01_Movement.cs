@@ -41,7 +41,7 @@ public class Game_01_Movement : MonoBehaviour
         Move();
         float speed = controller.velocity.magnitude;
         anims.SetFloat("Speed", speed);
-        if(Input.GetButtonDown("Fire1") ){
+        if(Input.GetButtonDown("Fire1") && Time.time > nextAttack){
             Grab();
         }
         else anims.SetBool("isGrabbing", false);
@@ -65,7 +65,6 @@ public class Game_01_Movement : MonoBehaviour
             if(hit.transform != null){
                 Destroy(hit.transform.gameObject);
                 enemyAmount--;
-                
                 PlayerPrefs.SetInt("EnemyCount", enemyAmount);
                 
             }
