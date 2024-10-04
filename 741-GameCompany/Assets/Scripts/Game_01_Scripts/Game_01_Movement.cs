@@ -10,15 +10,29 @@ public class Game_01_Movement : MonoBehaviour
     public float moveSpeed;
     public float attackRate, attackRange;
     public GameObject enemySpawner;
+    
+    
     CharacterController controller;
     Vector3 moveDirection;
     float nextAttack;
     Animator anims;
+    int enemyAmount;
+
+    void Awake(){
+        if(PlayerPrefs.GetInt("EnemyCount") <= 0){
+            PlayerPrefs.SetInt("EnemyCount", 8);
+        }
+        
+    }
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         anims = GetComponent<Animator>();
+        enemySpawner = GameObject.Find("Start Points");
+        enemyAmount = PlayerPrefs.GetInt("EnemyCount");
+        
+        
         
     }
 
@@ -27,10 +41,12 @@ public class Game_01_Movement : MonoBehaviour
         Move();
         float speed = controller.velocity.magnitude;
         anims.SetFloat("Speed", speed);
-        if(Input.GetButtonDown("Fire1") && Time.time > nextAttack){
+        if(Input.GetButtonDown("Fire1") ){
             Grab();
         }
         else anims.SetBool("isGrabbing", false);
+        Debug.Log(PlayerPrefs.GetInt("EnemyCount"));
+        
     }
 
     void Move()
@@ -46,8 +62,14 @@ public class Game_01_Movement : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(transform.position, transform.forward, out hit, attackRange)){
             Debug.Log(hit.transform.name);
-            Destroy(hit.transform.gameObject);
-            enemySpawner.GetComponent<Game_01_EnemySpawn>().enemyCount--;
+            if(hit.transform != null){
+                Destroy(hit.transform.gameObject);
+                enemyAmount--;
+                
+                PlayerPrefs.SetInt("EnemyCount", enemyAmount);
+                
+            }
+            
         }
     }
 }

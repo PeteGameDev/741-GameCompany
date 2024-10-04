@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Game_01_Enemy : MonoBehaviour
 {
-        NavMeshAgent agent;
+    NavMeshAgent agent;
     GameObject[] endPoint;
     
     Animator anims;
