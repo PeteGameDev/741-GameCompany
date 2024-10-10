@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
+using Random = UnityEngine.Random;
 
 public class Game_01_Movement : MonoBehaviour
 {
@@ -17,6 +19,9 @@ public class Game_01_Movement : MonoBehaviour
     float nextAttack;
     Animator anims;
     int enemyAmount;
+    int score;
+
+    public TMP_Text scoreText;
 
     void Awake(){
         if(PlayerPrefs.GetInt("EnemyCount") <= 0){
@@ -31,9 +36,6 @@ public class Game_01_Movement : MonoBehaviour
         anims = GetComponent<Animator>();
         enemySpawner = GameObject.Find("Start Points");
         enemyAmount = PlayerPrefs.GetInt("EnemyCount");
-        
-        
-        
     }
 
     void Update()
@@ -46,6 +48,7 @@ public class Game_01_Movement : MonoBehaviour
         }
         else anims.SetBool("isGrabbing", false);
         Debug.Log(PlayerPrefs.GetInt("EnemyCount"));
+        scoreText.SetText(PlayerPrefs.GetInt("Score").ToString());
         
     }
 
@@ -66,6 +69,8 @@ public class Game_01_Movement : MonoBehaviour
                 Destroy(hit.transform.gameObject);
                 enemyAmount--;
                 PlayerPrefs.SetInt("EnemyCount", enemyAmount);
+                score += Random.Range(950, 1100);
+                PlayerPrefs.SetInt("Score", score);
                 
             }
             
