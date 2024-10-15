@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Game02_Movement : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class Game02_Movement : MonoBehaviour
     Vector3 moveDirection;
     Animator anims;
     Vector3 randVector;
+    int score;
+    public TMP_Text scoreText;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -20,13 +21,13 @@ public class Game02_Movement : MonoBehaviour
     
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
         Rotate();
         float speed = controller.velocity.magnitude;
         anims.SetFloat("Speed", speed);
+        scoreText.SetText(score.ToString());
     }
 
     void Move()
@@ -54,7 +55,8 @@ public class Game02_Movement : MonoBehaviour
         if(other.gameObject.CompareTag("Ball")){
             anims.SetBool("isHit", true);
             randVector = new Vector3(Random.Range(-0.1f, 0.1f), 1f, Random.Range(-0.1f, 0.1f));
-            other.GetComponent<Rigidbody>().AddForce(randVector * Random.Range(15, 20), ForceMode.Impulse);   
+            other.GetComponent<Rigidbody>().AddForce(randVector * Random.Range(25, 30), ForceMode.Impulse); 
+            score++;  
         } 
     }
 
