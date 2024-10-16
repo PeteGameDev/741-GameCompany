@@ -8,8 +8,12 @@ public class Game02_End : MonoBehaviour
 {
     void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Ball")){
-            SceneManager.LoadScene("Game_02");
+            GameOver();
         }
 
+    }
+
+    void GameOver(){
+        SceneManager.LoadScene("Game_02");
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Game02_Movement : MonoBehaviour
 {
@@ -58,6 +59,9 @@ public class Game02_Movement : MonoBehaviour
             other.GetComponent<Rigidbody>().AddForce(randVector * Random.Range(25, 30), ForceMode.Impulse); 
             score++;  
         } 
+        if(other.gameObject.CompareTag("Enemy")){
+            SceneManager.LoadScene("Game_02");
+        }
     }
 
     void OnTriggerExit(Collider other){
