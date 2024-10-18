@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - PlayerSpawn
   - Ball
+  - Body
   layers:
   - Default
   - TransparentFX
