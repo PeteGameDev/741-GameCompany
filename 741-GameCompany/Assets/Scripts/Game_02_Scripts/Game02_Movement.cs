@@ -56,7 +56,7 @@ public class Game02_Movement : MonoBehaviour
         if(other.gameObject.CompareTag("Ball")){
             anims.SetBool("isHit", true);
             randVector = new Vector3(Random.Range(-0.1f, 0.1f), 1f, Random.Range(-0.1f, 0.1f));
-            other.GetComponent<Rigidbody>().AddForce(randVector * Random.Range(25, 30), ForceMode.Impulse); 
+            other.GetComponent<Rigidbody>().AddForce(randVector * Random.Range(15, 20), ForceMode.Impulse); 
             score++;  
         } 
         if(other.gameObject.CompareTag("Enemy")){
