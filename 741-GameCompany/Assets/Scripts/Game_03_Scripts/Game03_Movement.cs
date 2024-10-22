@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Game03_Movement : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeed, rotationSpeed;
 
     CharacterController controller;
     Vector3 moveDirection;
     
     Vector3 randVector;
    
-    Animator anims;
+    //Animator anims;
     
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        anims = GetComponent<Animator>();
+        //anims = GetComponent<Animator>();
     
     }
 
@@ -25,7 +25,7 @@ public class Game03_Movement : MonoBehaviour
         Move();
         Rotate();
         float speed = controller.velocity.magnitude;
-        anims.SetFloat("Speed", speed);
+        //anims.SetFloat("Speed", speed);
         
     }
 
@@ -39,7 +39,7 @@ public class Game03_Movement : MonoBehaviour
     }
 
     void Rotate(){
-        //raycast mouse pos
+        /*//raycast mouse pos
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
@@ -47,6 +47,9 @@ public class Game03_Movement : MonoBehaviour
         if(groundPlane.Raycast(cameraRay, out rayLength)){
             Vector3 lookPoint = cameraRay.GetPoint(rayLength);
             transform.LookAt(new Vector3(lookPoint.x, transform.position.y, lookPoint.z));
-        }
+        }*/
+
+        float rotHorizontal = Input.GetAxis("Mouse X") * rotationSpeed;
+        transform.Rotate(0, rotHorizontal, 0);
     }
 }
