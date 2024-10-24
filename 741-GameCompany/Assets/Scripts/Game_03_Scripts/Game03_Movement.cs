@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class Game03_Movement : MonoBehaviour
 {
-    public float moveSpeed, rotationSpeed;
+    public float moveSpeed, rotationSpeed, gravity;
 
     CharacterController controller;
     Vector3 moveDirection;
     
-    Vector3 randVector;
+    Vector3 randVector, gravVel;
    
-    //Animator anims;
+    Animator anims;
     
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        //anims = GetComponent<Animator>();
+        anims = GetComponent<Animator>();
+        Cursor.lockState = CursorLockMode.Locked;
     
     }
 
@@ -25,30 +26,21 @@ public class Game03_Movement : MonoBehaviour
         Move();
         Rotate();
         float speed = controller.velocity.magnitude;
-        //anims.SetFloat("Speed", speed);
+        anims.SetFloat("Speed", speed);
+        Debug.Log(speed);
         
     }
 
     void Move()
     {
-        
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
         moveDirection = moveHorizontal * transform.right + moveVertical * transform.forward;
         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+        
     }
 
     void Rotate(){
-        /*//raycast mouse pos
-        Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-        float rayLength;
-        //look at mouse pos
-        if(groundPlane.Raycast(cameraRay, out rayLength)){
-            Vector3 lookPoint = cameraRay.GetPoint(rayLength);
-            transform.LookAt(new Vector3(lookPoint.x, transform.position.y, lookPoint.z));
-        }*/
-
         float rotHorizontal = Input.GetAxis("Mouse X") * rotationSpeed;
         transform.Rotate(0, rotHorizontal, 0);
     }
