@@ -12,44 +12,32 @@ public class Game_01_Movement : MonoBehaviour
     public float moveSpeed;
     public float attackRate, attackRange;
     public GameObject enemySpawner;
-    
-    
+    public LayerMask enemyLayer;
+    public GameObject scoreManager;
     CharacterController controller;
     Vector3 moveDirection;
     float nextAttack;
     Animator anims;
-    int enemyAmount;
-    int score;
-
-    public TMP_Text scoreText;
-
-    void Awake(){
-        if(PlayerPrefs.GetInt("EnemyCount") <= 0){
-            PlayerPrefs.SetInt("EnemyCount", 8);
-        }
-        
-    }
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         anims = GetComponent<Animator>();
         enemySpawner = GameObject.Find("Start Points");
-        enemyAmount = PlayerPrefs.GetInt("EnemyCount");
+        scoreManager = GameObject.Find("ScoreManager");
+        //enemyAmount = PlayerPrefs.GetInt("EnemyCount");
     }
 
     void Update()
     {
         Move();
-        Rotate();
+        //Rotate();
         float speed = controller.velocity.magnitude;
         anims.SetFloat("Speed", speed);
         if(Input.GetButtonDown("Fire1") && Time.time > nextAttack){
             Grab();
         }
         else anims.SetBool("isGrabbing", false);
-        Debug.Log(PlayerPrefs.GetInt("EnemyCount"));
-        scoreText.SetText(PlayerPrefs.GetInt("Score").ToString());
         
     }
 
@@ -76,18 +64,27 @@ public class Game_01_Movement : MonoBehaviour
     void Grab(){
         nextAttack = Time.time + attackRate;
         anims.SetBool("isGrabbing", true);
+        Collider[] enemyColldiers = Physics.OverlapSphere(transform.position, attackRange, enemyLayer);
+        foreach(Collider enemyCol in enemyColldiers){
+            Destroy(enemyCol.gameObject);
+            scoreManager.GetComponent<ScoreManager>().enemyAmount--;
+            scoreManager.GetComponent<ScoreManager>().score += Random.Range(950, 1100);
+        }
+    }
+
+    /*
+    void Grab(){
+        nextAttack = Time.time + attackRate;
+        anims.SetBool("isGrabbing", true);
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit, attackRange)){
+        if(Physics.SphereCast(transform.position, attackRange, transform.forward, out hit, enemyLayer)){
             Game_01_Enemy enemy = hit.transform.GetComponent<Game_01_Enemy>();
             if(enemy != null){
                 Destroy(hit.transform.gameObject);
-                enemyAmount--;
-                PlayerPrefs.SetInt("EnemyCount", enemyAmount);
-                score += Random.Range(950, 1100);
-                PlayerPrefs.SetInt("Score", score);
-                
-            }
-            
+                scoreManager.GetComponent<ScoreManager>().enemyAmount--;
+                scoreManager.GetComponent<ScoreManager>().score += Random.Range(950, 1100);
+            } 
         }
-    }
+    }*/
+   
 }

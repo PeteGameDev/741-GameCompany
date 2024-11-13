@@ -8,17 +8,15 @@ public class Game_01_EndPoint : MonoBehaviour
 {
     public GameObject enemySpawn;
     int enemyNumber;
-
-    void LateUpdate(){
-        if(enemyNumber == PlayerPrefs.GetInt("EnemyCount")){
-            SceneManager.LoadScene("Game_01");
-        }
+    GameObject scoreManager;
+    void Start(){
+        scoreManager = GameObject.Find("ScoreManager");
     }
-
    
     void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Enemy")){
-            enemyNumber++;
+            //enemyNumber++;
+            scoreManager.GetComponent<ScoreManager>().enemyCount++;
         }
         
     }
