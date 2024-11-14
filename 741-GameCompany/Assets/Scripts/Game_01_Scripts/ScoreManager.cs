@@ -4,10 +4,12 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using System.Threading;
 
 public class ScoreManager : MonoBehaviour
 {
     public int enemyAmount, enemyCount, score, roundNumb;
+    int countdownNumber = 5;
     TMP_Text scoreText, roundText;
     
     void Awake(){
@@ -18,9 +20,10 @@ public class ScoreManager : MonoBehaviour
     }
     void Start()
     {
-        //DontDestroyOnLoad(this.gameObject);
+        //Time.timeScale = 0f;
         scoreText = GameObject.Find("ScoreText").GetComponent<TMP_Text>();
         roundText = GameObject.Find("RoundText").GetComponent<TMP_Text>();
+       
         scoreText.SetText(score.ToString());
         if(enemyAmount == 0){
             enemyAmount = 8;
@@ -29,12 +32,10 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.DeleteAll();
             Debug.Log("Destroying Player Prefs");
         }
-        
-        //roundText.transform.DOMove(new Vector3(0, 100, 0), 5f);
         roundText.DOFade(0, 2f);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         scoreText.SetText(score.ToString());
@@ -55,4 +56,6 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.SetInt("RoundNumber", roundNumb);
     }
+
+    
 }
