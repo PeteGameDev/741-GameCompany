@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomObject : MonoBehaviour
 {
     public GameObject[] bodyObject;
-    // Start is called before the first frame update
+    
     void Awake()
     {
         //bodyObject = GameObject.FindGameObjectsWithTag("Body");
