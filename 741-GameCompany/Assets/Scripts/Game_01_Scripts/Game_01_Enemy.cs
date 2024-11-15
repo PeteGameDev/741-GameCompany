@@ -10,6 +10,7 @@ public class Game_01_Enemy : MonoBehaviour
     
     Animator anims;
     int endPointNum;
+    public bool isHit;
 
     
     void Start()
@@ -27,6 +28,10 @@ public class Game_01_Enemy : MonoBehaviour
         float speed = agent.velocity.magnitude;
         anims.SetFloat("Speed", speed);
         Move();
+        if(isHit){
+            anims.SetBool("isHit", true);
+        }
+        else anims.SetBool("isHit", false);
     }
 
     void Move(){

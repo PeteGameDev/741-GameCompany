@@ -62,7 +62,8 @@ public class Game_01_Movement : MonoBehaviour
         nextAttack = Time.time + attackRate;
         Collider[] enemyColldiers = Physics.OverlapSphere(transform.position, attackRange, enemyLayer);
         foreach(Collider enemyCol in enemyColldiers){
-            Destroy(enemyCol.gameObject);
+            enemyCol.gameObject.GetComponent<Game_01_Enemy>().isHit = true;
+            Destroy(enemyCol.gameObject, 0.3f);
             scoreManager.GetComponent<ScoreManager>().enemyAmount--;
             scoreManager.GetComponent<ScoreManager>().score += Random.Range(950, 1100);
         }
