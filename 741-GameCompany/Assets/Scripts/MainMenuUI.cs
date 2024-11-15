@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class MainMenuUI : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void PlayGame(int sceneNumber){
+        SceneManager.LoadScene(sceneNumber);
     }
 
     void Start(){
