@@ -4,14 +4,17 @@ using UnityEngine;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using Microsoft.Unity.VisualStudio.Editor;
+using UnityEngine.UIElements;
 
 public class MainMenuUI : MonoBehaviour
 {
     public GameObject LevelSelectUI, PlayScreenUI, BoredUI;
+    public UnityEngine.UI.Image Fill2;
     int number;
+    bool isFlashing = true;
     
     public void Active(int activeNumber){
-        //LevelSelectUI.SetActive(true);
         switch(activeNumber){
             case 0:
                 PlayScreenUI.SetActive(true);
@@ -34,15 +37,27 @@ public class MainMenuUI : MonoBehaviour
 
     void Start(){
         InvokeRepeating("coinFlip", 1f, 5f);
+        InvokeRepeating("IconFlash", 0.5f, 0.5f);
     }
 
     void Update(){
         if(number == 1){
             BoredUI.SetActive(true);
         }
+        
     }
 
     void coinFlip(){
         number = Random.Range(0, 3);
+    }
+    void IconFlash(){
+        if(isFlashing == true){
+            Fill2.DOFade(0f, 0.01f);
+            isFlashing = false;
+        }
+        else if(isFlashing == false){
+            Fill2.DOFade(1f, 0.01f);
+            isFlashing = true;
+        }
     }
 }

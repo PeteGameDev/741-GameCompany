@@ -9,6 +9,7 @@ using System.Threading;
 public class ScoreManager : MonoBehaviour
 {
     public int enemyAmount, enemyCount, score, roundNumb;
+    public GameObject gameOverScreen;
     int countdownNumber = 5;
     TMP_Text scoreText, roundText;
     
@@ -39,14 +40,14 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         scoreText.SetText(score.ToString());
-        roundText.SetText("Round " + roundNumb.ToString());
+        roundText.SetText("ROUND " + roundNumb.ToString());
         if(enemyAmount == enemyCount){
             SceneManager.LoadScene("Game_01");
             enemyCount = 0;
             roundNumb++;
         }
         if(enemyAmount == 0){
-            Debug.Log("Winner");
+            SceneManager.LoadScene("Game_01_Score");
         }
     }
 
@@ -56,6 +57,4 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.SetInt("RoundNumber", roundNumb);
     }
-
-    
 }
