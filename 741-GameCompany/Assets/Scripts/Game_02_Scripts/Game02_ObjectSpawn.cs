@@ -16,7 +16,7 @@ public class Game02_ObjectSpawn : MonoBehaviour
     }
 
     void Spawn(){
-        GameObject clone = Instantiate(spawnedObject, spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position, Quaternion.identity);
+        GameObject clone = Instantiate(spawnedObject, spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position, transform.rotation);
         Destroy(clone, 10f);
     }
 }
