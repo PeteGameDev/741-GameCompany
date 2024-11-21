@@ -34192,7 +34192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4684161349580982, guid: a3fcccac8a1ef9547aa57b7a3861da30, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.097925775
+      value: -0.145
       objectReference: {fileID: 0}
     - target: {fileID: 4684161349580982, guid: a3fcccac8a1ef9547aa57b7a3861da30, type: 3}
       propertyPath: m_LocalPosition.y
@@ -34200,7 +34200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4684161349580982, guid: a3fcccac8a1ef9547aa57b7a3861da30, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.09052551
+      value: -0.044
       objectReference: {fileID: 0}
     - target: {fileID: 4684161349580982, guid: a3fcccac8a1ef9547aa57b7a3861da30, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42355,8 +42355,8 @@ MonoBehaviour:
   steerLeft: 97
   steerRight: 100
   jump: 32
-  acceleration: 8.2
-  steering: 36.5
+  acceleration: 13.4
+  steering: 53
   jumpForce: 50
   gravity: 10
   drift: 0.294
@@ -48093,7 +48093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyObject:
-  - {fileID: 1726346506427753961}
+  - {fileID: 3561864375777266689}
 --- !u!1 &3376488169252744806
 GameObject:
   m_ObjectHideFlags: 0
