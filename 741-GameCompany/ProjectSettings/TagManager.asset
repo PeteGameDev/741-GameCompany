@@ -10,6 +10,7 @@ TagManager:
   - PlayerSpawn
   - Ball
   - Body
+  - Office Worker
   layers:
   - Default
   - TransparentFX
