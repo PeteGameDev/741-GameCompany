@@ -11,12 +11,12 @@ public class Game03_Movement : MonoBehaviour
     
     Vector3 randVector, gravVel;
    
-    Animator anims;
+    //Animator anims;
     
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        anims = GetComponent<Animator>();
+        //anims = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
     
     }
@@ -26,7 +26,7 @@ public class Game03_Movement : MonoBehaviour
         Move();
         Rotate();
         float speed = controller.velocity.magnitude;
-        anims.SetFloat("Speed", speed);
+        //anims.SetFloat("Speed", speed);
         Debug.Log(speed);
         
     }

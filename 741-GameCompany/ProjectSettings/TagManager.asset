@@ -11,6 +11,7 @@ TagManager:
   - Ball
   - Body
   - Office Worker
+  - Letter
   layers:
   - Default
   - TransparentFX
