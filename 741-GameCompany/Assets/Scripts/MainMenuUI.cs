@@ -9,6 +9,9 @@ using UnityEngine.UIElements;
 
 public class MainMenuUI : MonoBehaviour
 {
+    public AudioClip[] audioSources;
+    public AudioSource randomSound;
+
     public GameObject LevelSelectUI, PlayScreenUI, BoredUI;
     public UnityEngine.UI.Image Fill2;
     int number;
@@ -38,17 +41,21 @@ public class MainMenuUI : MonoBehaviour
     void Start(){
         InvokeRepeating("coinFlip", 1f, 5f);
         InvokeRepeating("IconFlash", 0.5f, 0.5f);
+        RandomAudio();
     }
 
     void Update(){
         if(number == 1){
             BoredUI.SetActive(true);
         }
-        
+        if(number == 2){
+            RandomAudio();
+        }
     }
 
     void coinFlip(){
         number = Random.Range(0, 3);
+        
     }
     void IconFlash(){
         if(isFlashing == true){
@@ -59,5 +66,10 @@ public class MainMenuUI : MonoBehaviour
             Fill2.DOFade(1f, 0.01f);
             isFlashing = true;
         }
+    }
+
+    void RandomAudio(){
+        randomSound.clip = audioSources[Random.Range(0, audioSources.Length)];
+        randomSound.Play();
     }
 }

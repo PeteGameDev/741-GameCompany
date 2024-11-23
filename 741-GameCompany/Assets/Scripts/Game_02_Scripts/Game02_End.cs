@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class Game02_End : MonoBehaviour
 {
+    public GameObject ballObject;
+    void Update(){
+        if(ballObject.transform.position.y <= -10){
+            GameOver();
+        }
+    }
     void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Ball")){
             GameOver();
@@ -14,6 +20,6 @@ public class Game02_End : MonoBehaviour
     }
 
     void GameOver(){
-        SceneManager.LoadScene("Game_02");
+        SceneManager.LoadScene("Game_02_Score");
     }
 }

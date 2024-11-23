@@ -28,24 +28,3 @@ public class Game03_LetterCollection : MonoBehaviour
 
     
 }
-
-
-public class MovingPlatform : MonoBehaviour{
-
-    public GameObject platform;
-    public float rotateSpeed;
-
-    void Update(){
-        rotatePlatform();
-    }
-
-    void rotatePlatform(){
-        //gets inputs
-        float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        float moveVertical  = Input.GetAxisRaw("Vertical");
-
-        platform.transform.Rotate(moveHorizontal * rotateSpeed, moveVertical * rotateSpeed, 0);
-    }
-
-
-}

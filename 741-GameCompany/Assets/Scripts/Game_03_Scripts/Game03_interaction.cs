@@ -14,13 +14,13 @@ public class Game03_interaction : MonoBehaviour
 
     void Start(){
         officeWorkers = GameObject.FindGameObjectsWithTag("Office Worker");
-        letterAmount = 10;
+        letterAmount = 5;
     }
 
     void Update(){
         letterAmountText.SetText(letterAmount.ToString());
         if(letterAmount == 0){
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene("Game_03_Score");
         }
     }
 
