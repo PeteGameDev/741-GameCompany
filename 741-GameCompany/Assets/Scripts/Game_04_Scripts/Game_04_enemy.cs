@@ -10,7 +10,7 @@ public class Game_04_enemy : MonoBehaviour
     Animator anims;
     NavMeshAgent navMeshAgent;
     int targetNumber;
-    bool isHit;
+    public bool isHit;
     void Start()
     {
         targetObjects = GameObject.FindGameObjectsWithTag("Office Worker");
@@ -25,7 +25,7 @@ public class Game_04_enemy : MonoBehaviour
     {
         if(Time.time > attackDelay){
             Move();
-            transform.LookAt(targetObjects[targetNumber].transform);
+            //transform.LookAt(targetObjects[targetNumber].transform);
             if(Vector3.Distance(targetObjects[targetNumber].transform.position, transform.position) <= attackDistance){
                 Attack();
             }
@@ -39,10 +39,6 @@ public class Game_04_enemy : MonoBehaviour
         if(health <= 0){
             Destroy(gameObject);
         }
-        if(isHit){
-            anims.SetBool("isHit", true);
-        }
-        else anims.SetBool("isHit", false);
     }
 
     public void Attack(){
