@@ -10,6 +10,8 @@ public class Game_04_Weapon : MonoBehaviour
     float nextFire;
     public GameObject hitParticle;
     public ParticleSystem fireEffect;
+
+    int score;
     
     void Update()
     {
@@ -27,7 +29,8 @@ public class Game_04_Weapon : MonoBehaviour
             Game_04_enemy enemyTarget = hit.transform.GetComponent<Game_04_enemy>();
             if(enemyTarget != null){
                 enemyTarget.TakeDamage(gunDamage);
-                
+                score += 10;
+                PlayerPrefs.SetInt("Game04_Score", score);
                 GameObject particleClone = Instantiate(hitParticle, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(particleClone, 2f);
             }
