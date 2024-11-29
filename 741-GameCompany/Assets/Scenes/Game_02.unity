@@ -14,17 +14,17 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.8301887, g: 0.77931964, b: 0.7244571, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.2748754, g: 0.45683527, b: 0.8207547, a: 1}
+  m_AmbientSkyColor: {r: 0.6509434, g: 0.5388955, b: 0.4206568, a: 1}
   m_AmbientEquatorColor: {r: 0.3301887, g: 0.31206256, b: 0.3037113, a: 1}
   m_AmbientGroundColor: {r: 0.09433961, g: 0.093004614, b: 0.090334624, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 1
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -5043,7 +5043,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.96836174, b: 0.8820755, a: 1}
   m_Intensity: 1.6
   m_Range: 10
   m_SpotAngle: 30
@@ -10366,10 +10366,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0, g: 1, b: 0.13757372, a: 1}
-  m_Intensity: 10
+  m_Intensity: 15
   m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 14.275261
+  m_InnerSpotAngle: 14.275261
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0

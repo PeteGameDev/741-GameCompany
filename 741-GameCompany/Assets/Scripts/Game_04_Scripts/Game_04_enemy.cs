@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Game_04_enemy : MonoBehaviour
 {
     public GameObject[] targetObjects;
+    GameObject spawnObject;
     public float damageAmount, attackDelay, attackRate, attackDistance, health;
     Animator anims;
     NavMeshAgent navMeshAgent;
@@ -13,6 +14,7 @@ public class Game_04_enemy : MonoBehaviour
     public bool isHit;
     void Start()
     {
+        spawnObject = GameObject.Find("SpawnPoints");
         targetObjects = GameObject.FindGameObjectsWithTag("Office Worker");
         navMeshAgent = GetComponent<NavMeshAgent>();
         anims = GetComponent<Animator>();
@@ -23,6 +25,8 @@ public class Game_04_enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float speed = navMeshAgent.velocity.magnitude;
+        anims.SetFloat("Speed", speed);
         if(Time.time > attackDelay){
             Move();
             //transform.LookAt(targetObjects[targetNumber].transform);
@@ -31,14 +35,20 @@ public class Game_04_enemy : MonoBehaviour
             }
             
         }
-        else navMeshAgent.destination = transform.position;
+        //else navMeshAgent.destination = transform.position;
+
+        if(health <= 0){
+            anims.SetBool("isDancing", false);
+            navMeshAgent.destination = spawnObject.transform.position;
+            if(Vector3.Distance(spawnObject.transform.position, transform.position) == 0){
+                Destroy(gameObject);
+            }
+        }
     }
 
     public void TakeDamage(float amount){
         health -= amount;
-        if(health <= 0){
-            Destroy(gameObject);
-        }
+        
     }
 
     public void Attack(){
@@ -49,8 +59,7 @@ public class Game_04_enemy : MonoBehaviour
     }
 
     void Move(){
-        float speed = navMeshAgent.velocity.magnitude;
-        anims.SetFloat("Speed", speed);
+        
         navMeshAgent.destination = targetObjects[targetNumber].transform.position;
     }
 }
