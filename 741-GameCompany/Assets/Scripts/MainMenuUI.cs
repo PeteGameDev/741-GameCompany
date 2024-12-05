@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine.UIElements;
 
 public class MainMenuUI : MonoBehaviour

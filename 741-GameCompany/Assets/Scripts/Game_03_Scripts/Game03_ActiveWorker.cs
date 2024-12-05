@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using Unity.VisualScripting;
-using Microsoft.Unity.VisualStudio.Editor;
 
 public class Game03_ActiveWorker : MonoBehaviour
 {
