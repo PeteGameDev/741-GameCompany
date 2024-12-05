@@ -37,7 +37,7 @@ public class MainMenuUI : MonoBehaviour
     }
 
     void Start(){
-        InvokeRepeating("coinFlip", 1f, 5f);
+        InvokeRepeating("coinFlip", 5f, 5f);
         InvokeRepeating("IconFlash", 0.5f, 0.5f);
         RandomAudio();
     }
@@ -69,5 +69,9 @@ public class MainMenuUI : MonoBehaviour
     void RandomAudio(){
         randomSound.clip = audioSources[Random.Range(0, audioSources.Length)];
         randomSound.Play();
+    }
+
+    public void Quit(){
+        Application.Quit();
     }
 }

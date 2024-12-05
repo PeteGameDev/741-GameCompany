@@ -4681,9 +4681,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e56649e6b2481b42aa05aeb02f19a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 3266789059295600075, guid: 8f53503abc4312347954e99e54c4e372,
+  spawnedObject: {fileID: 4918349129027855221, guid: 93051ec3c87c1b84299622e5d18e68af,
     type: 3}
-  spawnTime: 4
+  spawnTime: 2
 --- !u!1001 &1142630638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6887,7 +6887,7 @@ Rigidbody:
   m_GameObject: {fileID: 1561825684}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -10366,10 +10366,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0, g: 1, b: 0.13757372, a: 1}
-  m_Intensity: 15
-  m_Range: 10
-  m_SpotAngle: 14.275261
-  m_InnerSpotAngle: 14.275261
+  m_Intensity: 20
+  m_Range: 15
+  m_SpotAngle: 10.1386
+  m_InnerSpotAngle: 10.1386
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
